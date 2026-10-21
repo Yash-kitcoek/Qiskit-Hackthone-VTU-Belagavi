@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b31">
+    <meta name="description" content="SmartLoad AI cargo and fleet matching demo workspace.">
+    <title>SmartLoad AI · Logistics control tower</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell" id="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="/" aria-label="SmartLoad AI home">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M5 23.5 12.5 9 20 23.5 27.5 9 32 17.5M8 28h20" /></svg></span>
+                <span class="brand-copy"><strong>smartload<span>.ai</span></strong><small>LOGISTICS OS</small></span>
+            </a>
+            <div class="workspace-label">WORKSPACE</div>
+            <nav class="primary-nav" aria-label="Main navigation">
+                <button class="nav-link active" data-page="overview"><span class="nav-icon">◫</span>Overview</button>
+                <button class="nav-link" data-page="cargo"><span class="nav-icon">▤</span>Cargo<span class="nav-count" id="cargo-nav-count">—</span></button>
+                <button class="nav-link" data-page="fleet"><span class="nav-icon">▰</span>Fleet</button>
+                <button class="nav-link" data-page="matching"><span class="nav-icon">⌘</span>Smart matching<span class="nav-pulse"></span></button>
+                <button class="nav-link" data-page="bookings"><span class="nav-icon">◷</span>Shipments</button>
+                <button class="nav-link" data-page="optimization"><span class="nav-icon">⌬</span>Optimization lab<span class="nav-soon">LAB</span></button>
+            </nav>
+            <div class="sidebar-spacer"></div>
+            <section class="sidebar-help">
+                <div class="help-orbit">✳</div>
+                <strong>Built for better loads.</strong>
+                <p>Match the right freight with the right fleet.</p>
+                <button data-page="matching" class="help-link">Explore matching <span>↗</span></button>
+            </section>
+            <div class="sidebar-user">
+                <div class="avatar avatar-small">AS</div>
+                <div class="sidebar-user-copy"><strong>Alex Sharma</strong><span>Demo workspace</span></div>
+                <button class="icon-button sidebar-more" id="profile-button" aria-label="Profile options" aria-expanded="false" title="Profile options">···</button>
+            </div>
+            <div class="profile-popover" id="profile-popover" hidden>
+                <strong>Demo role</strong>
+                <label for="profile-role-select">Switch workspace view</label>
+                <select id="profile-role-select" aria-label="Profile demo role">
+                    <option value="factory">Factory</option>
+                    <option value="transporter">Transporter</option>
+                    <option value="broker">Broker</option>
+                </select>
+                <small>Role preview only · not authentication</small>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <button class="mobile-menu icon-button" id="mobile-menu" aria-label="Open navigation">☰</button>
+                <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="page-breadcrumb">Overview</strong></div>
+                <div class="topbar-actions">
+                    <span class="demo-pill"><span></span> DEMO WORKSPACE</span>
+                    <div class="role-switch">
+                        <label for="role-select">View as</label>
+                        <select id="role-select" aria-label="Demo role">
+                            <option value="factory">Factory</option>
+                            <option value="transporter">Transporter</option>
+                            <option value="broker">Broker</option>
+                        </select>
+                    </div>
+                    <div class="notification-wrap">
+                        <button class="icon-button notification-button" id="notification-button" aria-label="Show alerts" aria-expanded="false">
+                            ♧<span class="notification-dot" id="notification-dot"></span>
+                        </button>
+                        <div class="notification-popover" id="notification-popover" hidden></div>
+                    </div>
+                    <div class="avatar">AS</div>
+                </div>
+            </header>
+            <div class="page-frame">
+                <div id="app-content" aria-live="polite">
+                    <div class="loading-state"><span class="spinner"></span><span>Opening your logistics workspace…</span></div>
+                </div>
+                <footer class="page-footer"><span>SmartLoad AI</span><span>Demo estimates are illustrative, not live dispatch data.</span></footer>
+            </div>
+        </main>
+    </div>
+    <div class="mobile-scrim" id="mobile-scrim"></div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <dialog class="modal" id="form-modal" aria-labelledby="modal-title">
+        <div id="modal-content"></div>
+    </dialog>
+</body>
+</html>
