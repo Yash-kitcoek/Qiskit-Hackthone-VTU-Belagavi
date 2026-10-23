@@ -1,5 +1,15 @@
 
 import "dotenv/config";
+
+// Validate critical environment variables at startup
+const REQUIRED_ENV = ["MONGODB_URI", "JWT_SECRET"];
+const missingEnv = REQUIRED_ENV.filter((k) => !process.env[k]);
+if (missingEnv.length > 0) {
+  console.error(`[STARTUP ERROR] Missing required environment variables: ${missingEnv.join(", ")}`);
+  console.error("Please set these in your Render dashboard (Environment tab) or .env file.");
+  process.exit(1);
+}
+
 import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
@@ -73,7 +83,7 @@ app.use((err, _req, res, _next) => {
     return res.status(status).json({ message: err.code === "LIMIT_FILE_SIZE" ? "Each verification document must be 5 MB or smaller." : "The uploaded verification documents could not be accepted." });
   }
   if (err?.message === "Upload PDF, JPG or PNG documents only.") return res.status(400).json({ message: err.message });
-  console.error("Unhandled LOADSETU API error:", err?.message || "unknown error");
+  console.error("Unhandled LOADSETU API error:", err?.message || "unknown error", err?.stack || "");
   res.status(err?.status || 500).json({ message: err?.status ? err.message : "Something went wrong. Please try again." });
 });
 
