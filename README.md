@@ -353,5 +353,3 @@ Built with ⚛️ Qiskit & Express for the VTU-QFF Hackathon
 [⬆ Back to Top](#-q-logistics-smartload-ai)
 
 </div>
-#   Q i s k i t - H a c k t h o n e - V T U - B e l a g a v i  
- 
